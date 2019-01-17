@@ -8,6 +8,7 @@ Demo如下：
 package main
 
 import (
+	"encoding/base64"
 	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/sdk/endpoints"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/dybaseapi"
@@ -78,7 +79,11 @@ func main() {
 
 		receiptHandles := make([]string, len(mnsResponse.Message))
 		for i, message := range mnsResponse.Message {
-			fmt.Println(message.MessageBody)
+			messageBody, decodeErr := base64.StdEncoding.DecodeString(message.MessageBody)
+			if decodeErr != nil {
+				panic(decodeErr)
+			}
+			fmt.Println(string(messageBody))
 			receiptHandles[i] = message.ReceiptHandle
 		}
 		if len(receiptHandles) > 0 {
@@ -86,7 +91,7 @@ func main() {
 			mnsDeleteRequest.Domain = mnsDomain
 			mnsDeleteRequest.QueueName = queueName
 			mnsDeleteRequest.SetReceiptHandles(receiptHandles)
-			//_, err = mnsClient.BatchDeleteMessage(mnsDeleteRequest)
+			//_, err = mnsClient.BatchDeleteMessage(mnsDeleteRequest) // 取消注释将删除队列中的消息
 			if err != nil {
 				panic(err)
 			}
