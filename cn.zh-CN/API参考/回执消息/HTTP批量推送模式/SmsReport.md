@@ -1,0 +1,71 @@
+# SmsReport {#concept_hpb_htk_3gb .concept}
+
+通过HTTP批量推送方式可以拉取短信状态报告（SmsReport）。
+
+## 协议说明 {#section_egs_3tk_3gb .section}
+
+|参数|说明|
+|:-|:-|
+|协议|HTTP + JSON|
+|编码|UTF-8|
+
+## 请求说明 {#section_igs_3tk_3gb .section}
+
+请求内容为JSON Array格式，单次请求可能会包含多个状态报告结果。
+
+-   请求样例
+
+    ```
+    [
+      {
+        "phone_number" : "13900000001",
+        "send_time" : "2017-01-01 00:00:00",
+        "report_time" : "2017-01-01 00:00:00",
+        "success" : true,
+        "err_code" : "DELIVERED",
+        "err_msg" : "用户接收成功",
+        "sms_size" : "1",
+        "biz_id" : "12345",
+        "out_id" : "67890"
+      }
+    ]
+    ```
+
+-   字段说明
+
+    |名称|类型|描述|示例值|是否必须|
+    |:-|:-|:-|:--|:---|
+    |phone\_number|String|手机号码|13900000001|必须|
+    |send\_time|String|发送时间|2017-01-01 00:00:00|必须|
+    |report\_time|String|状态报告时间|2017-01-01 00:00:00|必须|
+    |success|Boolean|是否接收成功|true\\false|必须|
+    |err\_code|String|状态报告编码|DELIVERED|必须|
+    |err\_msg|String|状态报告说明|用户接收成功|必须|
+    |sms\_size|String|短信长度|1|必须|
+    |biz\_id|String|发送序列号|12345|必须|
+    |out\_id|String|用户序列号|67890|必须|
+
+
+## 响应说明 {#section_sgs_3tk_3gb .section}
+
+-   响应样例
+
+    ```
+    {
+      "code" : 0,
+      "msg" : "接收成功"
+    }
+    ```
+
+-   字段说明
+
+    |名称|类型|描述|示例值|是否必须|
+    |:-|:-|:-|:--|:---|
+    |code|Number|应答编码|0|必须|
+    |msg|String|描述信息|接收成功|可选|
+
+
+## 重新推送 {#section_ush_ptk_3gb .section}
+
+第一次推送失败后，间隔1分钟、5分钟、10分钟、30分钟、60分钟、60分钟、60分钟、60分钟、60分钟后会进行重推，直至推送成功为止。如果推送10次后仍失败，不再重试。
+
