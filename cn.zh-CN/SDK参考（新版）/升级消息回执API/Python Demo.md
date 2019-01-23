@@ -61,6 +61,7 @@ class Token():
         print("start refresh token...")
         request = QueryTokenForMnsQueueRequest()
         request.set_MessageType(message_type)
+        request.set_QueueName(queue_name)
         response = acs_client.do_action_with_exception(request)
         # print response
         if response is None:
