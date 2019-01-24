@@ -18,16 +18,15 @@
 Demo如下：
 
 ```
-<?
+<?php
 use AlibabaCloud\Client\AlibabaCloud;
 use AlibabaCloud\Client\Exception\ClientException;
 use AlibabaCloud\Client\Exception\ServerException;
-use AlibabaCloud\Dybaseapi\MNS\Requests\BatchReceiveMessageRequest;
-use AlibabaCloud\Dybaseapi\MNS\Requests\BatchDeleteMessageRequest;
-use AlibabaCloud\Dybaseapi\MNS\Exception\MnsException;
+use AlibabaCloud\Dybaseapi\MNS\Requests\BatchReceiveMessage;
+use AlibabaCloud\Dybaseapi\MNS\Requests\BatchDeleteMessage;
 
 AlibabaCloud::accessKeyClient('<AccessKeyId>', '<AccessSecret>')
-    ->regionId('cn-hangzhou') // replace regionId as you need
+    ->regionId('cn-hangzhou')
     ->asGlobalClient();
 
 $queueName = '<QueueName>'; // 队列名称
@@ -38,38 +37,35 @@ $token = null;
 $i = 0;
 
 do {
-    if (null == $token || strtotime($token['ExpireTime']) - time() > 2 * 60) {
-        $response = AlibabaCloud::rpcRequest()
-            ->product('Dybaseapi')
-            ->version('2017-05-25')
-            ->action('QueryTokenForMnsQueue')
-            ->method('POST')
-            ->host("dybaseapi.aliyuncs.com")
-            ->options([
-                'query' => [
-                    'MessageType' => $messageType,
-                    'QueueName' => $queueName,
-                ],
-            ])
-            ->request()
-            ->toArray();
-    }
-
-    $token = $response['MessageTokenDTO'];
-
-    $mnsClient = new \AlibabaCloud\Dybaseapi\MNS\Client(
-        "http://1943695596114318.mns.cn-hangzhou.aliyuncs.com",
-        $token['AccessKeyId'],
-        $token['AccessKeySecret'],
-        $token['SecurityToken']
-    );
-
     try {
-        $mnsRequest = new BatchReceiveMessageRequest(10, 5);
+        if (null == $token || strtotime($token['ExpireTime']) - time() > 2 * 60) {
+            $response = AlibabaCloud::rpcRequest()
+                ->product('Dybaseapi')
+                ->version('2017-05-25')
+                ->action('QueryTokenForMnsQueue')
+                ->method('POST')
+                ->host("dybaseapi.aliyuncs.com")
+                ->options([
+                    'query' => [
+                        'MessageType' => $messageType,
+                        'QueueName' => $queueName,
+                    ],
+                ])
+                ->request()
+                ->toArray();
+        }
+
+        $token = $response['MessageTokenDTO'];
+
+        $mnsClient = new \AlibabaCloud\Dybaseapi\MNS\MnsClient(
+            "http://1943695596114318.mns.cn-hangzhou.aliyuncs.com",
+            $token['AccessKeyId'],
+            $token['AccessKeySecret'],
+            $token['SecurityToken']
+        );
+        $mnsRequest = new BatchReceiveMessage(10, 5);
         $mnsRequest->setQueueName($queueName);
         $mnsResponse = $mnsClient->sendRequest($mnsRequest);
-
-        print_r($mnsResponse);
 
         $receiptHandles = Array();
         foreach ($mnsResponse->Message as $message) {
@@ -80,19 +76,16 @@ do {
         }
 
         if (count($receiptHandles) > 0) {
-            $deleteRequest = new BatchDeleteMessageRequest($queueName, $receiptHandles);
+            $deleteRequest = new BatchDeleteMessage($queueName, $receiptHandles);
             $mnsClient->sendRequest($deleteRequest);
         }
-    } catch (MnsException $e) {
-        $i++;
-        echo "ex:{$e->getMnsErrorCode()}\n";
-        echo "ReceiveMessage Failed: {$e}\n";
     } catch (ClientException $e) {
         echo $e->getErrorMessage() . PHP_EOL;
-        exit;
     } catch (ServerException $e) {
+        if ($e->getCode() == 404) {
+            $i++;
+        }
         echo $e->getErrorMessage() . PHP_EOL;
-        exit;
     }
 } while ($i < 3);
 ```
