@@ -18,3 +18,12 @@
 |Node.js SDK|[短信服务Node.js SDK](https://www.npmjs.com/package/@alicloud/pop-core)|[快速开始](../../../../../cn.zh-CN/Node.js SDK/快速开始.md)|[Node.js SDK DEMO](https://api.aliyun.com/#/?product=Dysmsapi&lang=NODEJS)|
 |Go SDK|[短信服务Go SDK](https://github.com/aliyun/alibaba-cloud-sdk-go/)|[快速开始](../../../../../cn.zh-CN/Go SDK/快速开始.md)|[Go SDK DEMO](https://api.aliyun.com/#/?product=Dysmsapi&lang=GO)|
 
+## 短信服务SDK升级说明 {#section_c4y_5sr_pgb .section}
+
+2019年1月22日，短信服务发布了新版SDK，此日期后接入SDK的用户使用的均为新版SDK；2019年1月22日前接入的SDK的用户使用的是旧版SDK。相较于旧版SDK，新版SDK有以下优势：
+
+-   融入阿里云OpenAPI技术体系，改善用户体验。通过新版短信服务SDK，用户可以使用阿里云资源如API Explorer、CloudShell等工具体验API。
+-   阿里云统一维护，降低故障风险。新版短信服务SDK由阿里云SDK统一维护，同时支持自动更新及故障预警，包括Github通知和Deprecated提示等。
+
+新版短信服务SDK提供了更稳定、完善的开发环境，建议您尽快[升级SDK](cn.zh-CN/SDK参考（新版）/升级SDK.md)。
+
