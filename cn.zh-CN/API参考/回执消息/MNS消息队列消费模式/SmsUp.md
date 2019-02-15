@@ -2,7 +2,7 @@
 
 通过MNS消息队列可以拉取上行短信消息（SmsUp）。
 
-**说明：** 如果使用JAVA或Node.js语言的SDK上行短信消息（SmsUp），请分别使用[JAVA MNS SDK](http://ytx-sdk.oss-cn-shanghai.aliyuncs.com/dysms_mns_java_sdk.zip)和[原Node.js MNS SDK](http://alicom-fc-media.cn-hangzhou.oss.aliyun-inc.com/aliyun-dysms-sdk-master-c1b216773b098058f1bed5d3be97bd1d50eca9f3.zip?Expires=1861500764&OSSAccessKeyId=bypFNbGJVk73PsLI&Signature=4FarzYNea0EUnvdrq5bQvfcT11M%3D)。
+**说明：** 如果使用JAVA或Node.js语言的SDK上行短信消息（SmsUp），请分别使用[JAVA MNS SDK](http://ytx-sdk.oss-cn-shanghai.aliyuncs.com/dysms_mns_java_sdk.zip)和[原Node.js MNS SDK](https://www.npmjs.com/package/@alicloud/sms-sdk)。
 
 **上行短信消息SmsUp**
 
