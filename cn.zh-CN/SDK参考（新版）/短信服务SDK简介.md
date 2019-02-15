@@ -7,7 +7,7 @@
 **说明：** 
 
 -   通过JAVA SDK拉取[消息回执](../../../../../cn.zh-CN/API参考/回执消息/简介.md)，请使用[JAVA MNS SDK](http://ytx-sdk.oss-cn-shanghai.aliyuncs.com/dysms_mns_java_sdk.zip)。
--   通过Node.js SDK拉取[消息回执](../../../../../cn.zh-CN/API参考/回执消息/简介.md)，请使用[原Node.js MNS SDK](http://alicom-fc-media.cn-hangzhou.oss.aliyun-inc.com/aliyun-dysms-sdk-master-c1b216773b098058f1bed5d3be97bd1d50eca9f3.zip?Expires=1861500764&OSSAccessKeyId=bypFNbGJVk73PsLI&Signature=4FarzYNea0EUnvdrq5bQvfcT11M%3D)。
+-   通过Node.js SDK拉取[消息回执](../../../../../cn.zh-CN/API参考/回执消息/简介.md)，请使用[原Node.js MNS SDK](https://www.npmjs.com/package/@alicloud/sms-sdk)。
 
 |SDK|GitHub下载地址|说明文档|DEMO|
 |:--|:---------|:---|:---|
