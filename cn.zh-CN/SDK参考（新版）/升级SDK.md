@@ -36,7 +36,7 @@ PHP全新SDK上线，并支持composer安装，请按说明重新设置请求参
 
 新Node.js SDK仅依赖@alicloud/pop-core，与原SDK兼容。新Node.js SDK不再依赖@alicloud/sms-sdk，请参照Demo修改示例。
 
-**说明：** 通过Node.js SDK拉取[消息回执](../../../../../cn.zh-CN/API参考/回执消息/简介.md)，请使用[原Node.js MNS SDK](http://alicom-fc-media.cn-hangzhou.oss.aliyun-inc.com/aliyun-dysms-sdk-master-c1b216773b098058f1bed5d3be97bd1d50eca9f3.zip?Expires=1861500764&OSSAccessKeyId=bypFNbGJVk73PsLI&Signature=4FarzYNea0EUnvdrq5bQvfcT11M%3D)。
+**说明：** 通过Node.js SDK拉取[消息回执](../../../../../cn.zh-CN/API参考/回执消息/简介.md)，请使用[原Node.js MNS SDK](https://www.npmjs.com/package/@alicloud/sms-sdk)。
 
 ## Go SDK {#section_qnk_rjl_3gb .section}
 
