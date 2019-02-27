@@ -26,9 +26,9 @@ PHP全新SDK上线，并支持composer安装，请按说明重新设置请求参
 
 ## Python SDK {#section_flc_4jl_3gb .section}
 
-下载地址：[OpenAPI PHP Client](https://github.com/aliyun/openapi-sdk-php-client)
+下载地址：[Python SDK](https://github.com/aliyun/aliyun-openapi-python-sdk/tree/master/aliyun-python-sdk-core)
 
-使用说明：[OpenAPI PHP Client使用说明](https://github.com/aliyun/openapi-sdk-php-client/blob/master/README-CN.md)
+python-sdk-core已统一支持Python 2.0/3.0，与原有SDK兼容，建议参考[OpenAPI Explorer](https://api.aliyun.com/#/?product=Dysmsapi&lang=PYTHON)提供的Demo重新设置请求参数。
 
 ## Node.js SDK {#section_smg_qjl_3gb .section}
 
