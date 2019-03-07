@@ -30,7 +30,7 @@ AlibabaCloud::accessKeyClient('<AccessKeyId>', '<AccessSecret>')
     ->asGlobalClient();
 
 $queueName = '<QueueName>'; // 队列名称
-$messageType = '<MessageType>'; // SmsReport短信通知
+$messageType = '<MessageType>'; // 需要接收的消息类型
 
 $response = null;
 $token = null;
