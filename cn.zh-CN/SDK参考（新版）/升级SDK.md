@@ -1,6 +1,6 @@
 # 升级SDK {#concept_bkz_vyk_3gb .concept}
 
- 新SDK源码已经托管至开源平台Github，可使用GitHub clone的方式使用SDK，也可以使用依赖管理工具安装（PHP除外），Demo代码可通过OpenAPI Explorer生成，所有SDK均只依赖SDK核心库，使用通用的Request及Response来处理接口请求及响应。
+ 新SDK源码已经托管至开源平台Github，可使用GitHub clone的方式使用SDK，也可以使用依赖管理工具安装，Demo代码可通过OpenAPI Explorer生成，所有SDK均只依赖SDK核心库，使用通用的Request及Response来处理接口请求及响应。
 
 ## JAVA SDK {#section_ljt_hjl_3gb .section}
 
